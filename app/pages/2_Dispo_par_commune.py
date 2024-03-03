@@ -1,14 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
-from pymongo import MongoClient
-
-
-if "collection" not in st.session_state:
-    connection_string = "mongodb://test-projet-sds:test-projet-sds@localhost:27017/?authSource=projet-sds"
-    client = MongoClient(connection_string)
-    db = client["projet-sds"]
-    st.session_state.collection = db["aggregated_data"]
 
 collection = st.session_state.collection
 

@@ -4,5 +4,8 @@ data=$(wget -qO- "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/fo
 timestamp=$(date +"%Y-%m-%dT%H:%M:%S%:z")
 
 file_name="drinking_fontains ${timestamp}.json"
-path=${1:-./}
+path=${1:-~/drinking_fontains_data}
 echo $data > "${path}/${file_name}"
+# python venvwrapper
+workon projet-sds
+python3 script.py

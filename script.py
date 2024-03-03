@@ -4,17 +4,16 @@ from pathlib import Path
 from datetime import datetime
 
 from pymongo import MongoClient
+from dotenv import dotenv_values
 
-# setup mongo connection
-connection_string = (
-    "mongodb://test-projet-sds:test-projet-sds@localhost:27017/?authSource=projet-sds"
-)
-client = MongoClient(connection_string)
+config = dotenv_values(".env")
+
+client = MongoClient(config["MONGODB_CONNECTION_URI"])
 db = client["projet-sds"]
 raw_collection = db["raw_data"]
 
 # read raw data and store what matter to mongo
-data_dir_path = "drinking_fontains_data/"
+data_dir_path = os.path.expanduser("~/drinking_fontains_data/")
 file_names = os.listdir(data_dir_path)
 for file_name in file_names:
     file_path = os.path.join(data_dir_path, file_name)
