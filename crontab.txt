@@ -1,0 +1,2 @@
+0 10 * * * ~/get_data.sh ~/drinking_fontains_data
+
